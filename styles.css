@@ -1,0 +1,235 @@
+/* 全站暗色主题变量，方便后续统一调整品牌色和层级。 */
+:root {
+  color-scheme: dark;
+  --bg: #0b1020;
+  --bg-soft: #11182c;
+  --card: rgba(18, 25, 43, 0.82);
+  --card-border: rgba(148, 163, 184, 0.18);
+  --text: #eef4ff;
+  --muted: #9fb0c8;
+  --accent: #7dd3fc;
+  --accent-strong: #38bdf8;
+  --accent-soft: rgba(56, 189, 248, 0.14);
+  --success-soft: rgba(52, 211, 153, 0.12);
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--bg);
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  font-family: Inter, "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.75;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.22), transparent 32rem),
+    radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.14), transparent 30rem),
+    linear-gradient(135deg, #070b16 0%, #0b1020 46%, #111827 100%);
+}
+
+/* 页面容器控制阅读宽度，避免长文本在大屏上横向拉得过宽。 */
+.site-shell {
+  width: min(100% - 32px, 980px);
+  margin: 0 auto;
+  padding: 56px 0 72px;
+}
+
+.hero,
+.card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  border-radius: 28px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.hero {
+  padding: clamp(32px, 6vw, 64px);
+}
+
+.hero::before,
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.09), transparent 36%);
+}
+
+.card {
+  margin-top: 24px;
+  padding: clamp(26px, 4vw, 44px);
+}
+
+.content-grid {
+  display: grid;
+  gap: 22px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 14px;
+  padding: 6px 12px;
+  border: 1px solid rgba(125, 211, 252, 0.28);
+  border-radius: 999px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  position: relative;
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 16px;
+  font-size: clamp(2.3rem, 7vw, 4.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.06em;
+}
+
+h2 {
+  margin: 34px 0 12px;
+  padding-top: 8px;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  letter-spacing: -0.03em;
+}
+
+h3 {
+  margin: 24px 0 8px;
+  color: #dbeafe;
+  font-size: 1.08rem;
+}
+
+p {
+  color: var(--muted);
+}
+
+.lead {
+  max-width: 720px;
+  margin-bottom: 0;
+  color: #cfddf3;
+  font-size: clamp(1.05rem, 2vw, 1.28rem);
+}
+
+.meta {
+  display: inline-flex;
+  margin-bottom: 20px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: #bbf7d0;
+  background: var(--success-soft);
+  font-size: 0.95rem;
+}
+
+ul {
+  padding-left: 1.25rem;
+  color: var(--muted);
+}
+
+li {
+  margin: 8px 0;
+}
+
+strong {
+  color: var(--text);
+}
+
+/* 链接样式兼顾正文链接和首页入口按钮。 */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 160ms ease, border-color 160ms ease, transform 160ms ease, background 160ms ease;
+}
+
+a:hover {
+  color: #bae6fd;
+}
+
+.nav-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-links li {
+  margin: 0;
+}
+
+.nav-links a,
+.back-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 64px;
+  padding: 18px 20px;
+  border: 1px solid rgba(125, 211, 252, 0.22);
+  border-radius: 18px;
+  color: var(--text);
+  background: rgba(15, 23, 42, 0.72);
+}
+
+.nav-links a::after,
+.back-link::after {
+  content: "→";
+  color: var(--accent-strong);
+}
+
+.nav-links a:hover,
+.back-link:hover {
+  border-color: rgba(125, 211, 252, 0.58);
+  background: rgba(14, 116, 144, 0.18);
+  transform: translateY(-2px);
+}
+
+.back-link {
+  display: inline-flex;
+  justify-content: center;
+  min-height: auto;
+  margin-top: 28px;
+}
+
+.footer-note {
+  margin-top: 28px;
+  color: rgba(159, 176, 200, 0.8);
+  font-size: 0.94rem;
+}
+
+@media (max-width: 640px) {
+  .site-shell {
+    width: min(100% - 20px, 980px);
+    padding: 28px 0 44px;
+  }
+
+  .hero,
+  .card {
+    border-radius: 22px;
+  }
+
+  .nav-links {
+    grid-template-columns: 1fr;
+  }
+}
